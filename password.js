@@ -92,9 +92,15 @@ function showpassword() {
   
   
   <tr>
-                            <td>${element.website}<img onclick="copytext('${element.website}') " class="im im1" src="copy.svg" alt="copied " width="15" height="12" ></td>
-                            <td>${element.username}<img onclick="copytext('${element.username}') "  class="im"  src="copy.svg" alt="copied" width="15" height="12"></td>
-                            <td > ${hidepassword(element.password)}<img  onclick="copytext('${element.password}') "  class="im" src="copy.svg" width="15" height="12" alt="copied"></td>
+                            <td>${element.website}<span onclick="copytext('${element.username}',this)" class="copy icon material-symbols-rounded">
+                content_copy
+            </span></td>
+                            <td>${element.username}<span onclick="copytext('${element.username}',this)" class="copy icon material-symbols-rounded" >
+                content_copy
+            </span></td>
+                            <td > ${hidepassword(element.password)}<span onclick="copytext('${element.password}',this)" class="copy icon material-symbols-rounded">
+                content_copy
+            </span></td>
                             <td><button onclick="deletedta('${element.website}')" >delete</button></td>
                         </tr>
 
@@ -115,11 +121,13 @@ function showpassword() {
 
 
 }
-function copytext(text) {
+function copytext(text,element) {
     if (navigator.clipboard.writeText(text)) {// this will get the text on clipboard 
-        cpy.style.display = 'inline';
+        // cpy.style.display = 'inline';
+         element.innerText="check";
         setTimeout(() => {
-            cpy.style.display = 'none';
+            // cpy.style.display = 'none';
+            element.innerText="content_copy";
         }, 1000);
 
 
@@ -165,3 +173,6 @@ function hidepassword(pass) {
 
   }
 showpassword();
+
+
+//this is used to denote that particular span element 
